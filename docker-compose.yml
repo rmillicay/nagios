@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nagios:
+    image: jasonrivers/nagios:latest
+    ports:
+      - "8080:80"
+    environment:
+      - NAGIOS_TIMEZONE=America/New_York
+      - NAGIOSADMIN_USER=nagiosadmin
+      - NAGIOSADMIN_PASS=nagiosadmin
+      - WEB_PASS=nagios
+      - NAGIOS_CONTACT_EMAIL=youremail@yourdomain.com
+    volumes:
+      - /path/to/nagios/etc:/opt/nagios/etc
+      - /path/to/nagios/var:/opt/nagios/var
+    restart: always
